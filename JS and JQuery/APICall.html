@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>JQuery Assignment</title>
+    <style>
+        /* CSS GOES HERE */
+
+        button {
+            border-radius: 6px;
+            color: gold;
+            padding: 10px 50px;
+            margin-left: 40%;
+            background-color: rebeccapurple;
+        }
+
+        button:hover {
+            opacity: 10;
+            color: ghostwhite;
+            background-color: coral;
+
+        }
+
+        div {
+            color: maroon;
+            background-color: mediumaquamarine;
+            text-align: center;
+            position: relative;
+            /* animation-name: apiCall; */
+            animation-duration: 3s;
+            /* animation-iteration-count: 3; */
+            animation-fill-mode:alternate;
+            animation-timing-function: ease-in-out;
+        }
+
+        div:hover {
+            color: teal;
+            background-color: antiquewhite;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comments" style="border: 1px solid green;padding:1rem;margin-bottom: 0.5rem;">
+    </div>
+    <button id="load" onclick="getAPI()">Load Data</button><br>
+
+    <script>     //JQ LOGIC GOES HERE
+
+        function getAPI() {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts",
+                type: "GET",
+                dataType: "JSON",
+                data: JSON.stringify({}),
+                success: function (data) {
+
+                    $('.comments').append("<div>" + JSON.stringify(data) + "</div>")
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#load').click(function () {
+                $('div').animate({ fontSize: '30px' }, 4000);    // center:'150px',
+                // width : '100px'
+
+            });
+        });
+
+    // $(document).ready(function(){
+    //     // $('div').fadeToggle();
+    //     $('#load').click(function(){
+
+    //     $('div').slideDown(4000);
+
+        // $('div').animate({fontSize : "40px"},5000 );
+        // });
+        // $('button').slideDown(4000);
+        // $('div').animate({left : "1000px"});
+        // $('div').animate({top:"2500px"});
+        // $('div').animate({width : "1000px"});
+
+    // });
+
+
+
+    </script>
+</body>
+
+</html>
